@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos: Yasogami High School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+
+<body style="background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)">
+<! Barra de navegação>
+<nav>
+    <div style="background-color: black" class="nav-wrapper">
+      <a href="/" class="brand-logo">Yasogami High School</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/"> Pagina inicial </a></li>
+        <li><a href="/form">Cadastar novo aluno </a></li>
+      </ul>
+    </div>
+</nav>
+    
+    <div class="container" style="margin-bottom: 20px" >
+        <h3 class="teste" style="font-family:sans-serif; text-align: center" >Alunos Matriculados</h3>
+        <a class="btn btn-primary" href="/form">Novo Aluno</a>
+        <table class="table">
+            <thead>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Curso</th>
+                <th>Opções</th>
+            </thead>
+            <for|aluno, index| of=data.results>
+                <tr>
+                    <td>${aluno.id}</td>
+                    <td>${aluno.nome}</td>
+                    <td>${aluno.email}</td>
+                    <td>${aluno.curso}</td>
+                    <td>
+                        <a class="btn btn-secondary" href="/form/${aluno.id}" style="margin-right: 15px">Editar</a>
+
+                        <a class="btn btn-danger" href="/alunos/delete/${aluno.id}">Deletar</a>
+                    </td>
+                </tr>
+                </for>
+        </table>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <for|message, index| of=data.error_messages>
+        <script>
+            M.toast({ html: '${message}', classes:'red lighten-2' })
+        </script>
+        </for>
+
+        <for|message, index| of=data.success_messages>
+        <script>
+            M.toast({ html: '${message}', classes:'black' })
+        </script>
+        </for>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+SELECT * FROM crud_node.alunos;
